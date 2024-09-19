@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态网页示例</title>
+    <style>
+
+        body {
+            margin: 0;
+            height: 100vh; /* 使背景图覆盖整个视口 */
+            background: linear-gradient(to bottom, #add8e6, #4b0082); /* 浅蓝到蓝紫的渐变 */
+            color: white; /* 文字颜色 */
+            font-family: Arial, sans-serif; /* 定义字体 */
+            display: flex;
+            flex-direction: column;
+        }
+         #menu{
+            height:100 px;
+            margin: 50px auto;
+            background-color:linear-gradient(to bottom, #add8e6, #4b0082);;
+        }
+
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center; /* 中心对齐 */
+        }
+
+        nav ul {
+            list-style: none; /* 去掉列表样式 */
+            padding: 0; /* 去掉内边距 */
+            margin: 0; /* 去掉外边距 */
+            display: flex;
+            justify-content: center; /* 中心对齐 */
+        }
+
+        nav li {
+            margin: 0 15px; /* 左右间距 */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none; /* 去掉下划线 */
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline; /* 悬停时加下划线 */
+        }
+
+        main {
+            flex: 1; /* 让主内容区域填满剩余空间 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: left; /* 左对齐 */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* 使内容有点透明的背景 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px; /* 最大宽度 */
+            width: 100%; /* 适应屏幕宽度 */
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: space-around; /* 平均分配空间 */
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            margin: 5px;
+            border-radius: 4px; /* 圆角图片 */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 图片阴影 */
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .page {
+            display: none; /* 默认隐藏所有页面 */
+        }
+
+        .active {
+            display: block; /* 仅显示活动页面 */
+        }
+         #box_1 {
+                border: 0; /* 移除边框 */
+                width: 400px;
+                height: 400px;
+                margin: 50px auto; /* 垂直外边距50px，水平居中 */
+                background-image: url("lw.jpg");
+                background-size: cover; /* 让背景图铺满整个容器 */
+                background-position: center; /* 背景图居中显示 */
+         }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>我的平生</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">主页</a></li>
+                <li><a href="#" onclick="showPage('about')">关于</a></li>
+                <li><a href="#" onclick="showPage('gallery')">画廊</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="home" class="container active">
+            <h1>龙伟小简介</h1>
+            <p>你好，我是龙伟，一名充满活力的大二学生，今年18岁。羽毛球是我生活中不可或缺的一部分，它不仅让我享受到了运动的乐趣，还培养了我的耐力和团队合作精神</p>
+            <p>我还对游戏充满热情,游戏不仅是我放松的方式，也是我锻炼思维能力和解决问题能力的途径。</p>
+            <p>我热爱编程,在业余时间也会学习新的技术和编程语言。我的兴趣爱好包括骑自行车、户外运动和读书。</p>
+            <p>喜欢看小说，吃零食</p>
+        </div>
+        <div id="gallery" class="container page">
+            <h2>画廊</h2>
+            <div class="gallery">
+                <img src="path/to/another/image.jpg" alt="画廊图片" class="responsive-image">
+                <img src="path/to/another/image2.jpg" alt="画廊图片" class="responsive-image">
+            </div>
+        </div>
+    </main>
+    <div id="menu">
+        <p>   </p>
+        <p>   </p>
+        <a href="https://www.douyin.com/">我常常上的网站:</a>
+        <p>   </p>
+        <p>   </p>
+    </div>
+    <div id="box_1">
+        <h5></h5>
+    </div>
+
+    <footer>
+        <p>&copy; 来自外星的网页</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active'); // 移除所有页面的激活状态
+            });
+            document.getElementById(pageId).classList.add('active'); // 激活所选页面
+        }
+    </script>
+</body>
+</html>
