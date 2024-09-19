@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态网页示例</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh; /* 使背景图覆盖整个视口 */
+            background: linear-gradient(to bottom, #ffeb3b, #ff4081, #9c27b0);; /* 浅蓝到蓝紫的渐变 */
+            color: white; /* 文字颜色 */
+            font-family: Arial, sans-serif; /* 定义字体 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center; /* 中心对齐 */
+        }
+
+        nav ul {
+            list-style: none; /* 去掉列表样式 */
+            padding: 0; /* 去掉内边距 */
+            margin: 0; /* 去掉外边距 */
+            display: flex;
+            justify-content: center; /* 中心对齐 */
+        }
+
+        nav li {
+            margin: 0 15px; /* 左右间距 */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none; /* 去掉下划线 */
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline; /* 悬停时加下划线 */
+        }
+
+        main {
+            flex: 1; /* 让主内容区域填满剩余空间 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: left; /* 左对齐 */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* 使内容有点透明的背景 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px; /* 最大宽度 */
+            width: 100%; /* 适应屏幕宽度 */
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: space-around; /* 平均分配空间 */
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            margin: 5px;
+            border-radius: 4px; /* 圆角图片 */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 图片阴影 */
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .page {
+            display: none; /* 默认隐藏所有页面 */
+        }
+
+        .active {
+            display: block; /* 仅显示活动页面 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>梅均豪的静态网页</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">主页</a></li>
+                <li><a href="#" onclick="showPage('about')">关于</a></li>
+                <li><a href="#" onclick="showPage('gallery')">画廊</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="home" class="container active">
+            <h1>梅均豪的个人简介</h1>
+            <p>大家好，我叫梅均豪，是一名专注于人工智能领域的学生。在学术的海洋里，我热衷于探索智能技术的无限可能，致力于将理论转化为实际应用，为科技进步贡献自己的一份力量。在生活中，我是一个乐观向上、善于倾听的人。我喜欢结交新朋友，与大家一起分享生活的点滴。同时，我也有着一颗不断追求进步的心，努力学习新知识，让自己变得更加优秀。</p>
+            <p>然而，在紧张的学习之余，我也有着属于自己的小确幸。音乐是我生活中不可或缺的调味剂，无论是激昂的摇滚还是温柔的民谣，都能触动我的心弦，让我在旋律中找到放松与灵感。此外，我还是一个钓鱼和打游戏的爱好者。在湖边垂钓时，我享受那份宁静与等待的乐趣，它教会了我耐心与坚持；而在游戏的世界里，我则化身为勇敢的探险者，与队友并肩作战，体验着团队协作带来的成就感。</p>
+            <p>在未来，我期望能够成为一名优秀的人工智能工程师或研究员，致力于开发更加智能、高效、可靠的人工智能系统。我希望能够运用所学知识，解决现实世界中的复杂问题，为企业和社会创造更大的价值。同时，我也期待能够参与到人工智能领域的前沿研究中，不断探索新的技术方向和应用领域，推动人工智能技术的不断创新和发展。</p>
+            <p>以上就是我的自我介绍，希望未来能够与更多志同道合的朋友一起交流和学习。</p>
+        </div>
+
+        <div id="gallery" class="container page">
+            <h2>画廊</h2>
+            <div class="gallery">
+                <img src="path/to/another/image.jpg" alt="画廊图片" class="responsive-image">
+                <img src="path/to/another/image2.jpg" alt="画廊图片" class="responsive-image">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 梅均豪</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active'); // 移除所有页面的激活状态
+            });
+            document.getElementById(pageId).classList.add('active'); // 激活所选页面
+        }
+    </script>
+</body>
+</html>
